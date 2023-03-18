@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color picker</title> 
+
+    <style>
+body {
+    padding: 30px;
+    display: grid;
+    place-items: center;
+}
+#blink {
+            animation: blinker 1.5s linear infinite;
+            color: red;
+            font-family: sans-serif;
+        }
+        @keyframes blinker {
+            50% {
+                opacity: 0;
+            }
+        }
+code {
+    padding: 5px 8px;
+    border-radius: 18px;
+    background: #f8f9f9;
+    color: #cc0066;
+}
+
+[type='color'] {
+    appearance: none;
+    padding: 0;
+    width: 15px;
+    height: 15px;
+    border: none;
+}
+
+[type='color']::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+[type='color']::-webkit-color-swatch {
+    border: none;
+}
+
+.color-picker {
+    padding: 10px 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    background: #f8f9f9;
+}
+
+
+    </style>
+</head>
+
+<body>
+
+<script>
+    
+document.querySelectorAll('input[type=color]').forEach(function (picker) {
+
+var targetLabel = document.querySelector('label[for="' + picker.id + '"]'),
+    codeArea = document.createElement('span');
+
+codeArea.innerHTML = picker.value;
+targetLabel.appendChild(codeArea);
+
+
+picker.addEventListener('change', function () {
+    codeArea.innerHTML = picker.value;
+    targetLabel.appendChild(codeArea);
+});
+});
+
+
+</script>
+ 
+<h1 id="blink">PLEASE CHOOSE A COLOR!!!</h1>
+    <span class="color-picker">
+        <label for="colorPicker">
+            <input type="color" value="#1DB8CE" id="colorPicker">
+        </label>
+    </span>
+
+
+  
+</body>
+
+</html>
